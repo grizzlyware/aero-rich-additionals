@@ -5,6 +5,7 @@ namespace Grizzlyware\Aero\RichAdditionals;
 use Aero\Common\Traits\CanHaveAdditionalAttributes;
 use Grizzlyware\Aero\RichAdditionals\Helpers\ClassHelper;
 use Grizzlyware\Aero\RichAdditionals\Providers\RichAdditionalsServiceProvider;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 
 class RichAttribute implements Contracts\RichAttributeInterface
@@ -19,16 +20,24 @@ class RichAttribute implements Contracts\RichAttributeInterface
 
     private bool $required = false;
     private bool $addEmptyOption = false;
+    private string $relationKey;
 
+    /**
+     * @param class-string<Model> $model
+     */
     public function __construct(
-        private string $key,
-        private string $relationKey,
-        private AttributeType $type,
+        private readonly string $key,
+        string $model,
+        private readonly AttributeType $type,
         private ? string $help = null,
         private array $validationRules = [],
         private ? string $label = null,
     ) {
-        //
+        if (!ClassHelper::classExtends($model, Model::class)) {
+            throw new \InvalidArgumentException('$model must be an instance of ' . Model::class);
+        }
+
+        $this->relationKey = (new $model())->getMorphClass();
     }
 
 	public function getAttributeKey(): string
@@ -36,7 +45,7 @@ class RichAttribute implements Contracts\RichAttributeInterface
         return $this->key;
 	}
 
-	public function getRelationKey(): string
+	public function getParentMorphClass(): string
 	{
         return $this->relationKey;
 	}

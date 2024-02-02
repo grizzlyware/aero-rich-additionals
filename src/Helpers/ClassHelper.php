@@ -8,5 +8,10 @@ class ClassHelper
     {
         return in_array($trait, class_uses_recursive($class));
     }
+
+    public static function classExtends(string|object $class, string $parent): bool
+    {
+        return is_subclass_of($class, $parent);
+    }
 }
 

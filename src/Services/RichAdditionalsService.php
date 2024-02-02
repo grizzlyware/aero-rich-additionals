@@ -3,6 +3,8 @@
 namespace Grizzlyware\Aero\RichAdditionals\Services;
 
 use Grizzlyware\Aero\RichAdditionals\Contracts\RichAttributeInterface;
+use Grizzlyware\Aero\RichAdditionals\Helpers\ClassHelper;
+use Illuminate\Database\Eloquent\Model;
 
 class RichAdditionalsService
 {
@@ -13,20 +15,30 @@ class RichAdditionalsService
 
     public function addAttribute(RichAttributeInterface $attribute): void
     {
-        if (!isset($this->attributes[$attribute->getRelationKey()])) {
-            $this->attributes[$attribute->getRelationKey()] = [];
+        if (!isset($this->attributes[$attribute->getParentMorphClass()])) {
+            $this->attributes[$attribute->getParentMorphClass()] = [];
         }
 
-        $this->attributes[$attribute->getRelationKey()][$attribute->getAttributeKey()] = $attribute;
+        $this->attributes[$attribute->getParentMorphClass()][$attribute->getAttributeKey()] = $attribute;
     }
 
     /**
-     * @param string $relationKey
+     * @param class-string<Model>|Model $model
      * @return RichAttributeInterface[]
      */
-    public function getAttributesForRelation(string $relationKey): array
+    public function getAttributesForModel(string|Model $model): array
     {
-        return $this->attributes[$relationKey] ?? [];
+        if (is_string($model)) {
+            if (!ClassHelper::classExtends($model, Model::class)) {
+                throw new \InvalidArgumentException('$model must be an instance of ' . Model::class);
+            }
+
+            $model = new $model();
+        }
+
+        $morphClass = (new $model())->getMorphClass();
+
+        return $this->attributes[$morphClass] ?? [];
     }
 }
 
