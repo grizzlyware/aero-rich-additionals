@@ -31,7 +31,7 @@ class RichAdditionalsServiceProvider extends \Illuminate\Support\ServiceProvider
     {
         $this->loadViewsFrom(
             __DIR__ . '/../resources/views',
-            'rich-additional-attributes'
+            'rich-additionals'
         );
 
         $this->app->singleton(RichAttributeService::class);
@@ -133,7 +133,7 @@ class RichAdditionalsServiceProvider extends \Illuminate\Support\ServiceProvider
                 $attribute->injectAttributable($modelInstance);
             }
 
-            return view('rich-additional-attributes::admin/show-attributes', [
+            return view('rich-additionals::admin/show-attributes', [
                 'rich_attributes' => $attributes
             ]);
         });
