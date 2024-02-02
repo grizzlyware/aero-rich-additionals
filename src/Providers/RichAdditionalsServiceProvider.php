@@ -221,13 +221,18 @@ class RichAdditionalsServiceProvider extends \Illuminate\Support\ServiceProvider
                     $value = null;
                 }
 
-                $existingValue = $modelInstance->additional($attribute->getAttributeKey());
+                $existingValue = $modelInstance->additional(
+                    $attribute->getAttributeKey()
+                );
 
                 if (!$existingValue && !$value) {
                     continue;
                 }
 
-                $modelInstance->additional($attribute->getAttributeKey(), $value);
+                $modelInstance->additional(
+                    $attribute->getAttributeKey(),
+                    $value
+                );
             }
 
             if ($modelInstance instanceof Product) {
