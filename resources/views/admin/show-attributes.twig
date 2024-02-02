@@ -31,7 +31,7 @@
 
                     <div class="w-1/2 px-2 mb-4">
 
-                        <label for="attribute-value-1" class="block">Value</label>
+                        <label for="attribute-value-1" class="block">Value {% if attribute.isRequired() %}<span class="text-error">*</span>{% endif %}</label>
 
                         {% if attribute.getType().value == 'dropdown' %}
 
