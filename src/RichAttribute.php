@@ -2,6 +2,7 @@
 
 namespace Grizzlyware\Aero\RichAdditionals;
 
+use Aero\Common\Models\Model;
 use Aero\Common\Traits\CanHaveAdditionalAttributes;
 use Grizzlyware\Aero\RichAdditionals\Helpers\ClassHelper;
 use Grizzlyware\Aero\RichAdditionals\Providers\RichAdditionalsServiceProvider;
@@ -19,16 +20,28 @@ class RichAttribute implements Contracts\RichAttributeInterface
 
     private bool $required = false;
     private bool $addEmptyOption = false;
+    private string $relationKey;
 
+    /**
+     * @param class-string<Model> $aeroModel
+     */
     public function __construct(
         private string $key,
-        private string $relationKey,
+        string $aeroModel,
         private AttributeType $type,
         private ? string $help = null,
         private array $validationRules = [],
         private ? string $label = null,
     ) {
-        //
+        if (!is_subclass_of($aeroModel, Model::class)) {
+            throw new \InvalidArgumentException("Invalid model class: $aeroModel");
+        }
+
+        if (!defined($aeroModel . '::RELATION_KEY')) {
+            throw new \InvalidArgumentException("Model class $aeroModel does not have a RELATION_KEY constant");
+        }
+
+        $this->relationKey = $aeroModel::RELATION_KEY;
     }
 
 	public function getAttributeKey(): string
