@@ -26,9 +26,9 @@ class RichAttribute implements Contracts\RichAttributeInterface
      * @param class-string<Model> $aeroModel
      */
     public function __construct(
-        private string $key,
+        private readonly string $key,
         string $aeroModel,
-        private AttributeType $type,
+        private readonly AttributeType $type,
         private ? string $help = null,
         private array $validationRules = [],
         private ? string $label = null,
