@@ -14,6 +14,15 @@ composer require grizzlyware/aero-rich-additionals
 
 ## Usage
 
+Rich attributes can be added to the following models (so far!):
+
+- Products
+- Categories
+- Pages
+- Shipping Methods
+
+Pass the model class to the `add` or helper methods, and then chain methods to configure the attribute.
+
 ```php
 <?php
 
