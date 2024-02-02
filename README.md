@@ -66,7 +66,7 @@ class RichAdditionalsProvider extends ServiceProvider
             ->setValidationRules(['email'])
         ;
 
-        // Custom validation rules
+        // Generate options with a callback
         RichAdditionals::add('isle_number', Product::class, AttributeType::DROPDOWN)
             ->setHelp('Where is this product located in the store?')
             ->setOptions(fn() => array_combine(range(50, 100), range(50, 100)))
