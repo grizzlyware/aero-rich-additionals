@@ -3,7 +3,8 @@
     "description": "Allow recording structured additional attributes against models in Aero Commerce",
     "type": "library",
     "require": {
-        "php": "^8"
+        "php": "^8",
+        "illuminate/support": "^10"
     },
     "license": "MIT",
     "autoload": {
@@ -17,5 +18,12 @@
             "email": "contact@grizzlyware.com"
         }
     ],
-    "minimum-stability": "stable"
+    "minimum-stability": "stable",
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Grizzlyware\\Aero\\RichAdditionals\\Providers\\RichAdditionalsServiceProvider"
+            ]
+        }
+    }
 }
