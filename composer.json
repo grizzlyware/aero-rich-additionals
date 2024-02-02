@@ -1,0 +1,21 @@
+{
+    "name": "grizzlyware/aero-rich-additionals",
+    "description": "Allow recording structured additional attributes against models in Aero Commerce",
+    "type": "library",
+    "require": {
+        "php": "^8"
+    },
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Grizzlyware\\Aero\\RichAdditionals\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Grizzlyware Ltd",
+            "email": "contact@grizzlyware.com"
+        }
+    ],
+    "minimum-stability": "stable"
+}
