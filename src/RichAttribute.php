@@ -44,6 +44,21 @@ class RichAttribute implements Contracts\RichAttributeInterface
         $this->relationKey = $aeroModel::RELATION_KEY;
     }
 
+    public static function enum(string $key, string $model, string $enumClass): static
+    {
+        if (!enum_exists($enumClass)) {
+            throw new \InvalidArgumentException("Invalid enum class: $enumClass");
+        }
+
+        $attribute = new static($key, $model, AttributeType::DROPDOWN);
+
+        $attribute->setOptions(
+            $enumClass::cases()
+        );
+
+        return $attribute;
+    }
+
 	public function getAttributeKey(): string
 	{
         return $this->key;
