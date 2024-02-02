@@ -1,6 +1,6 @@
 <?php
 
-namespace Grizzlyware\RichAdditionalAttributes;
+namespace Grizzlyware\Aero\RichAdditionals;
 
 enum AttributeType: string
 {

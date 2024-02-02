@@ -18,7 +18,7 @@ use Aero\Content\Models\Page;
 use Aero\Responses\ResponseBuilder;
 use Grizzlyware\Aero\RichAdditionals\Helpers\ClassHelper;
 use Grizzlyware\Aero\RichAdditionals\Services\RichAdditionalsService;
-use Grizzlyware\RichAdditionalAttributes\AttributeType;
+use Grizzlyware\Aero\RichAdditionals\AttributeType;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use Illuminate\View\View;
@@ -30,7 +30,7 @@ class RichAdditionalsServiceProvider extends \Illuminate\Support\ServiceProvider
     public function register(): void
     {
         $this->loadViewsFrom(
-            __DIR__ . '/../resources/views',
+            __DIR__ . '/../../resources/views',
             'rich-additionals'
         );
 

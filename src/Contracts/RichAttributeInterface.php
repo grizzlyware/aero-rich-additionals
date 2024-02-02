@@ -1,8 +1,8 @@
 <?php
 
-namespace Grizzlyware\RichAdditionalAttributes\Contracts;
+namespace Grizzlyware\Aero\RichAdditionals\Contracts;
 
-use Grizzlyware\RichAdditionalAttributes\AttributeType;
+use Grizzlyware\Aero\RichAdditionals\AttributeType;
 
 interface RichAttributeInterface
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace Grizzlyware\RichAdditionalAttributes;
+namespace Grizzlyware\Aero\RichAdditionals;
 
 use Aero\Common\Traits\CanHaveAdditionalAttributes;
 use Grizzlyware\Aero\RichAdditionals\Helpers\ClassHelper;

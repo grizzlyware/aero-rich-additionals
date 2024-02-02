@@ -2,7 +2,7 @@
 
 namespace Grizzlyware\Aero\RichAdditionals\Services;
 
-use Grizzlyware\RichAdditionalAttributes\Contracts\RichAttributeInterface;
+use Grizzlyware\Aero\RichAdditionals\Contracts\RichAttributeInterface;
 
 class RichAdditionalsService
 {
