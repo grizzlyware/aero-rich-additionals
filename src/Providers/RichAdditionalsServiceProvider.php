@@ -17,7 +17,7 @@ use Aero\Common\Traits\CanHaveAdditionalAttributes;
 use Aero\Content\Models\Page;
 use Aero\Responses\ResponseBuilder;
 use Grizzlyware\Aero\RichAdditionals\Helpers\ClassHelper;
-use Grizzlyware\Aero\RichAdditionals\Services\RichAttributeService;
+use Grizzlyware\Aero\RichAdditionals\Services\RichAdditionalsService;
 use Grizzlyware\RichAdditionalAttributes\AttributeType;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
@@ -34,7 +34,7 @@ class RichAdditionalsServiceProvider extends \Illuminate\Support\ServiceProvider
             'rich-additionals'
         );
 
-        $this->app->singleton(RichAttributeService::class);
+        $this->app->singleton(RichAdditionalsService::class);
     }
 
     public function boot(): void
@@ -118,8 +118,8 @@ class RichAdditionalsServiceProvider extends \Illuminate\Support\ServiceProvider
             /** @var Model|CanHaveAdditionalAttributes $modelInstance */
             $modelInstance = $vars[$variableInView];
 
-            /** @var RichAttributeService $ras */
-            $ras = $this->app->get(RichAttributeService::class);
+            /** @var RichAdditionalsService $ras */
+            $ras = $this->app->get(RichAdditionalsService::class);
 
             $attributes = $ras->getAttributesForRelation($modelInstance::RELATION_KEY);
 
@@ -177,8 +177,8 @@ class RichAdditionalsServiceProvider extends \Illuminate\Support\ServiceProvider
             /** @var Request $request */
             $request = $builder->request;
 
-            /** @var RichAttributeService $ras */
-            $ras = $this->app->get(RichAttributeService::class);
+            /** @var RichAdditionalsService $ras */
+            $ras = $this->app->get(RichAdditionalsService::class);
 
             $attributes = $ras->getAttributesForRelation($modelInstance::RELATION_KEY);
 

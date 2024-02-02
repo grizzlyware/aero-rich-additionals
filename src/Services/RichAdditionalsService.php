@@ -4,7 +4,7 @@ namespace Grizzlyware\Aero\RichAdditionals\Services;
 
 use Grizzlyware\RichAdditionalAttributes\Contracts\RichAttributeInterface;
 
-class RichAttributeService
+class RichAdditionalsService
 {
     /**
      * @var array<string, array<string, RichAttributeInterface>>
