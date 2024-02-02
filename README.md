@@ -86,3 +86,8 @@ Please raise an issue on GitHub if you have any problems with this package.
 Development of this package is sponsored by [Grizzlyware](https://www.grizzlyware.com).
 
 Commercial support is available, please [contact us](https://www.grizzlyware.com/contact) for more information.
+
+## Security
+
+If you discover any security related issues, please email a maintainer of this project, and **do not raise an issue**.
+
