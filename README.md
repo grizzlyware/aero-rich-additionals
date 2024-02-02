@@ -4,8 +4,7 @@
 
 This package allows recording structured additional attributes against models in Aero Commerce.
 
-![image](https://github.com/grizzlyware/aero-rich-additionals/assets/1097093/d4e299e0-97ab-494b-82c4-1e6d1bc1d5a2)
-
+![image](https://github.com/grizzlyware/aero-rich-additionals/assets/1097093/91085cfa-f563-40df-b423-cd2b08d809d8)
 
 ## Installation
 
