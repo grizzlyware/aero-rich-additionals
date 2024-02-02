@@ -23,7 +23,7 @@ Rich attributes can be added to the following models (so far!):
 - Pages
 - Shipping Methods
 
-Pass the model class to the `add` or helper methods, and then chain methods to configure the attribute.
+Pass the model class to the `add` or helper methods on the `RichAdditionals` facade, and then chain methods to configure the attribute, if required.
 
 ```php
 <?php
