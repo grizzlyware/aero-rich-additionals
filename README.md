@@ -77,3 +77,12 @@ class RichAdditionalsProvider extends ServiceProvider
 }
 ```
 
+
+
+## Support
+
+Please raise an issue on GitHub if you have any problems with this package.
+
+Development of this package is sponsored by [Grizzlyware](https://www.grizzlyware.com).
+
+Commercial support is available, please [contact us](https://www.grizzlyware.com/contact) for more information.
