@@ -1,0 +1,8 @@
+{
+    "http-basic": {
+        "agora.aerocommerce.com": {
+            "username": "AERO_AGORA_USERNAME",
+            "password": "AERO_AGORA_PASSWORD"
+        }
+    }
+}

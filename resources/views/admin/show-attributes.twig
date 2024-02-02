@@ -1,0 +1,80 @@
+<div class="card w-full mt-4 [ aero-accordion ]" data-section="rich-additional-attributes">
+
+    <input type="checkbox" class="hidden" id="rich-additional-attributes" aria-hidden="true">
+
+    <label class="aero-accordion-label" for="rich-additional-attributes" aria-hidden="true">
+        <h3 class="m-0 p-0">Other Properties</h3>
+    </label>
+
+    <div class="visually-hidden hidden"><h3>Other Properties</h3></div>
+
+    <div class="[ aero-accordion-content ]">
+
+        <p class="">
+
+            <span class="text-error font-bold">Warning</span> &mdash; These properties are backed by 'Additional Attributes' and take priority over them. They are intended to reduce human input errors.
+
+        </p>
+
+        {% for attribute in rich_attributes %}
+
+            <div class="flex flex-wrap -mx-2 mt-2 pt-2">
+
+                <div class="flex-1 flex flex-wrap px-2 -mx-2 -mb-4">
+
+                    <div class="w-1/2 px-2 mb-4">
+
+                        <label class="block">Name</label>
+                        <input type="text" autocomplete="off" readonly disabled value="{{ attribute.getAttributeLabel() }}" class="w-full">
+
+                    </div>
+
+                    <div class="w-1/2 px-2 mb-4">
+
+                        <label for="attribute-value-1" class="block">Value</label>
+
+                        {% if attribute.getType().value == 'dropdown' %}
+
+                            <select class="w-full mt-2" name="rich-additionals[{{ attribute.getAttributeKey() }}]" id="" {% if attribute.isRequired() %}required{% endif %}>
+
+                                {% if not attribute.isRequired() %}
+
+                                    <option value="9934fceb-76c4-4eb3-8651-cdef783d7c3c">&mdash;</option>
+
+                                {% endif %}
+
+                                {% for option, label in attribute.getOptions() %}
+
+                                    <option value="{{ option }}" {% if option == attribute.getValue() %}selected{% endif %}>{{ label }}</option>
+
+                                {% endfor %}
+
+                            </select>
+
+                        {% elseif attribute.getType().value == 'string' %}
+
+                            <input name="rich-additionals[{{ attribute.getAttributeKey() }}]" type="text" autocomplete="off" {% if attribute.isRequired() %} required="required" {% endif %} class="w-full" value="{{ attribute.getValue() }}">
+
+                        {% endif %}
+
+                        {% if attribute.getHelp() %}
+
+                            <div class="mt-2 italic">
+
+                                {{ attribute.getHelp() }}
+
+                            </div>
+
+                        {% endif %}
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        {% endfor %}
+
+    </div>
+
+</div>

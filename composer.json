@@ -3,13 +3,12 @@
     "description": "Allow recording structured additional attributes against models in Aero Commerce",
     "type": "library",
     "require": {
-        "php": "^8",
-        "illuminate/support": "^10"
+        "php": "^8"
     },
     "license": "MIT",
     "autoload": {
         "psr-4": {
-            "Grizzlyware\\Aero\\RichAdditionals\\": "src/"
+            "Grizzlyware\\Aero\\RichAdditionals\\": "./src/"
         }
     },
     "authors": [
@@ -25,5 +24,14 @@
                 "Grizzlyware\\Aero\\RichAdditionals\\Providers\\RichAdditionalsServiceProvider"
             ]
         }
+    },
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://agora.aerocommerce.com"
+        }
+    ],
+    "require-dev": {
+        "aerocommerce/admin": "^1.24"
     }
 }
