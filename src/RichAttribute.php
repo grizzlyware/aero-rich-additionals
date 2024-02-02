@@ -96,8 +96,19 @@ class RichAttribute implements Contracts\RichAttributeInterface
         $this->options = $options;
     }
 
-    public function setOptions(array|\Closure $options): self
+    /**
+     * Pass an array of options, a closure that returns an array of options, or a string that is the name of an enum class
+     */
+    public function setOptions(array|\Closure|string $options): self
     {
+        if (is_string($options)) {
+            if (enum_exists($options)) {
+                $options = $options::cases();
+            } else {
+                throw new \InvalidArgumentException("Invalid enum class: $options");
+            }
+        }
+
         $this->options = $options;
 
         return $this;

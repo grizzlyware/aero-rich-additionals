@@ -11,7 +11,7 @@ interface RichAttributeInterface
     public function injectAttributable(mixed $attributable): void;
     public function getType(): AttributeType;
     public function getOptions(): array;
-    public function setOptions(array $options): self;
+    public function setOptions(array|\Closure|string $options): self;
     public function setRequired(bool $required = true): self;
     public function isRequired(): bool;
     public function getHelp(): ? string;
