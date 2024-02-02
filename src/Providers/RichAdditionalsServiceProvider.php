@@ -104,11 +104,7 @@ class RichAdditionalsServiceProvider extends \Illuminate\Support\ServiceProvider
     private function addAttributesToSlot(string $slot, string $model, string $variableInView = null): void
     {
         if (null === $variableInView) {
-            if (!ClassHelper::classExtends($model, \Illuminate\Database\Eloquent\Model::class)) {
-                throw new \InvalidArgumentException('$model must be an instance of ' . Model::class);
-            }
-
-            $variableInView = (new $model())->getMorphClass();
+            $variableInView = $model::RELATION_KEY;
         }
 
         if (!ClassHelper::classUsesTrait($model, CanHaveAdditionalAttributes::class)) {
@@ -125,7 +121,7 @@ class RichAdditionalsServiceProvider extends \Illuminate\Support\ServiceProvider
             /** @var RichAdditionalsService $ras */
             $ras = $this->app->get(RichAdditionalsService::class);
 
-            $attributes = $ras->getAttributesForModel($modelInstance);
+            $attributes = $ras->getAttributesForRelation($modelInstance::RELATION_KEY);
 
             if (count($attributes) < 1) {
                 return null;
@@ -184,7 +180,7 @@ class RichAdditionalsServiceProvider extends \Illuminate\Support\ServiceProvider
             /** @var RichAdditionalsService $ras */
             $ras = $this->app->get(RichAdditionalsService::class);
 
-            $attributes = $ras->getAttributesForModel($modelInstance);
+            $attributes = $ras->getAttributesForRelation($modelInstance::RELATION_KEY);
 
             $validationRules = [];
 

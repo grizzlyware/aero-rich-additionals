@@ -3,7 +3,7 @@
     "description": "Allow recording structured additional attributes against models in Aero Commerce",
     "type": "library",
     "require": {
-        "php": "^8.2"
+        "php": "^8"
     },
     "license": "MIT",
     "autoload": {

@@ -7,7 +7,7 @@ use Grizzlyware\Aero\RichAdditionals\AttributeType;
 interface RichAttributeInterface
 {
     public function getAttributeKey(): string;
-    public function getParentMorphClass(): string;
+    public function getRelationKey(): string;
     public function injectAttributable(mixed $attributable): void;
     public function getType(): AttributeType;
     public function getOptions(): array;
