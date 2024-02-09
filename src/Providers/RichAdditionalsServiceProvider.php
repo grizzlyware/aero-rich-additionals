@@ -208,7 +208,7 @@ class RichAdditionalsServiceProvider extends \Illuminate\Support\ServiceProvider
                 $validationRules['rich-additionals.' . $attribute->getAttributeKey()] = $rules;
             }
 
-            $validated = $request->validate($validationRules)['rich-additionals'];
+            $validated = $request->validate($validationRules)['rich-additionals'] ?? [];
 
             foreach ($attributes as $attribute) {
                 $value = $validated[$attribute->getAttributeKey()];
