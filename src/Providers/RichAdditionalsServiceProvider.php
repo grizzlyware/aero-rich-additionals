@@ -5,6 +5,7 @@ namespace Grizzlyware\Aero\RichAdditionals\Providers;
 use Aero\Admin\AdminSlot;
 use Aero\Admin\Facades\Admin;
 use Aero\Admin\Http\Responses\Catalog\AdminCategoryUpdate;
+use Aero\Admin\Http\Responses\Catalog\AdminProductStore;
 use Aero\Admin\Http\Responses\Catalog\AdminProductUpdate;
 use Aero\Admin\Http\Responses\Configuration\AdminShippingMethodUpdate;
 use Aero\Admin\Http\Responses\Content\AdminPageUpdate;
@@ -54,8 +55,18 @@ class RichAdditionalsServiceProvider extends \Illuminate\Support\ServiceProvider
             Product::class
         );
 
+        $this->addAttributesToSlot(
+            'catalog.product.new.cards',
+            Product::class
+        );
+
         $this->extendUpdateResponseBuilder(
             AdminProductUpdate::class,
+            Product::class
+        );
+
+        $this->extendUpdateResponseBuilder(
+            AdminProductStore::class,
             Product::class
         );
 
