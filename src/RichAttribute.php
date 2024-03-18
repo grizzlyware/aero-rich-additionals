@@ -4,6 +4,7 @@ namespace Grizzlyware\Aero\RichAdditionals;
 
 use Aero\Common\Models\Model;
 use Aero\Common\Traits\CanHaveAdditionalAttributes;
+use Grizzlyware\Aero\RichAdditionals\Contracts\LabelledEnum;
 use Grizzlyware\Aero\RichAdditionals\Helpers\ClassHelper;
 use Grizzlyware\Aero\RichAdditionals\Providers\RichAdditionalsServiceProvider;
 use Illuminate\Support\Str;
@@ -110,7 +111,17 @@ class RichAttribute implements Contracts\RichAttributeInterface
         if (count($options) > 0) {
             if (reset($options) instanceof \UnitEnum) {
                 $options = collect($options)
-                    ->mapWithKeys(fn(\UnitEnum $enum) => [$enum->value => Str::of($enum->value)->replace('_', ' ')->title()->toString()])
+                    ->mapWithKeys(
+                        function (\UnitEnum $enum): array {
+                            $label = $enum instanceof LabelledEnum ? $enum->getRichAdditionalLabel() : null;
+                            return [
+                                $enum->value => $label ?? Str::of($enum->value)->replace(
+                                    '_',
+                                    ' '
+                                )->title()->toString()
+                            ];
+                        }
+                    )
                     ->toArray();
             }
         }
