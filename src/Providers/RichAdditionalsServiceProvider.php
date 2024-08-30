@@ -246,10 +246,6 @@ class RichAdditionalsServiceProvider extends \Illuminate\Support\ServiceProvider
                 );
             }
 
-            if ($modelInstance instanceof Product) {
-                event(new ProductUpdated($modelInstance));
-            }
-
             return $next($builder);
         });
     }
